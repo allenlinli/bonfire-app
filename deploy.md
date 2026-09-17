@@ -10,7 +10,7 @@ SPDX-License-Identifier: CC0-1.0
 A short guide to running Bonfire in a production environment and setting up a digital space connected to the fediverse.
 
 > #### Status {: .info}
-> The release candidate of Bonfire Social 1.0 is ready! Other flavours of Bonfire are currently at alpha or beta stages and not ready to use. 
+>  Bonfire Social 1.0 is ready! Other flavours of Bonfire are currently at alpha or beta stages and not ready to use. 
 
 _These instructions are for setting up Bonfire in production. If you want to run the backend in development, please refer to our [Installation guide](./HACKING.md) instead._
 
@@ -74,13 +74,18 @@ Install the [Bonfire recipe](https://recipes.coopcloud.tech/bonfire) for Co-op C
 
 1. `abra app new bonfire --secrets` (optionally with `--pass` if you'd like to save secrets in `pass`) and select your server from the list and enter the domain name you want Bonfire to be served from
 2. `abra app config YOUR_APP_DOMAIN_NAME` and check/edit the config keys, see [prepare the config](#preparing-the-config-in-env) for details about what to edit, for example you should add the email sending key:
-	```
+
+```
 MAIL_BACKEND=mailgun
 MAIL_DOMAIN=[yourdomain.net]
 MAIL_KEY=[your-mailgun-sending-key]
 MAIL_FROM=[from@yourdomain.net]
-	```
-	> You can also choose what version of Bonfire to use, by default `APP_VERSION=latest` means it will run the latest stable release (eg. 1.0.0), but if you're conformable testing newer features and improvements (and reporting issues and feedback, please!), you can set `APP_VERSION=latest-rc` for the latest release candidate, or `APP_VERSION=latest-beta`, or even `APP_VERSION=latest-alpha` for the most bleeding edge (and probably most buggy) version 
+```
+
+> You can also choose what version of Bonfire to use, by default `APP_VERSION=latest` means it will run the latest stable release (eg. 1.0.0), but if you're conformable testing newer features and improvements (and reporting issues and feedback, please!), you can set `APP_VERSION=latest-rc` for the latest release candidate, or `APP_VERSION=latest-beta`, or even `APP_VERSION=latest-alpha` for the most bleeding edge (and probably most buggy) version
+>
+> You can also choose a flavour (social is default) by setting e.g. `APP_FLAVOUR=community`
+
 3. `abra app deploy YOUR_APP_DOMAIN_NAME`
 6. Open the configured domain in your browser and sign up at at https://yourdomain.net/signup (the instance is invite-only by default, but the first person to sign up bypasses that, and is also automatically an instance admin).
 
@@ -175,9 +180,11 @@ For production, we recommend to set up a CI workflow to automate this, for an ex
 Finally, try [running the app](#running-with-docker)!
 
 
-#### Running with Docker
+#### Running with Docker
 
-1. Before running the app for the first time, but after having [prepared the config](#preparing-the-config-in-env), you should run `just setup-prod` which will get the instance ready.
+1. Before running the app for the first time, but after having [prepared the config](#preparing-the-config-in-env), you should get the instance ready:
+   - If you're using **pre-built images** (easy mode), run `just setup-prod` which will pull the Docker images.
+   - If you're **building your own image** (custom build, see above), run `just setup-prod-build` instead.
 
 2. The you can start the docker containers with docker-compose: `just rel-run`
 
@@ -236,7 +243,41 @@ You may also want to put this in the appropriate place in your system so your ch
 
 - The migrations should automatically run on first boot, but if you run into troubles the migration command is: `Bonfire.Common.Repo.migrate()` in the iex console. 
 
-- To run the instance as a daemon, use `bin/bonfire start daemon`. [Yay, you're up and running!](#notes-on-running-the-app)
+- To run the instance as a background daemon (via Erlang's `run_erl`), use `bin/bonfire daemon`. Logs will be written to `tmp/log/` inside the release directory. Note: if you are using systemd (see below), use `bin/bonfire start` instead — systemd manages the process directly and captures stdout to journald. [Yay, you're up and running!](#notes-on-running-the-app)
+
+- To keep Bonfire running in production you'll want a process supervisor. On systemd-based Linux systems (Debian, RHEL, etc.) you can use the provided unit file — but other options like OpenRC, runit, or your platform's init system work equally well, as long as they run `bin/bonfire start` in the foreground and restart on failure. For systemd:
+
+```sh
+# If you built from source, copy the release to its permanent location:
+cp -r _build/prod/rel/bonfire /opt/bonfire
+
+# Or download a pre-built release from GitHub (replace flavour/architecture/distro/version as appropriate).
+# Pre-built releases are compiled on a matching host (debian:bookworm or redhat/ubi9) so binaries are guaranteed to be compatible with the target system:
+# curl -L https://github.com/bonfire-networks/bonfire-app/releases/latest/download/bonfire-social-amd64-debian-bookworm.tar.gz | tar -xz -C /opt/bonfire --strip-components=1
+# curl -L https://github.com/bonfire-networks/bonfire-app/releases/latest/download/bonfire-social-amd64-rhel-9.tar.gz | tar -xz -C /opt/bonfire --strip-components=1
+
+# Create a dedicated system user
+useradd --system --home /opt/bonfire --shell /sbin/nologin bonfire
+chown -R bonfire:bonfire /opt/bonfire
+
+# Create the environment file based on the provided templates, then fill in secrets
+mkdir -p /etc/bonfire
+cat config/templates/public.env config/templates/not_secret.env > /etc/bonfire/.env
+# Edit /etc/bonfire/.env to set SECRET_KEY_BASE, DATABASE_URL, and other required values
+chown bonfire:bonfire /etc/bonfire/.env
+chmod 600 /etc/bonfire/.env
+
+# Install and enable the service
+cp config/deploy/bonfire.service /etc/systemd/system/bonfire.service
+systemctl daemon-reload
+systemctl enable --now bonfire
+
+# Check status and logs
+systemctl status bonfire
+journalctl -u bonfire -f
+```
+
+The environment file at `/etc/bonfire/.env` is based on `config/templates/public.env` and `config/templates/not_secret.env`. At minimum you must set `SECRET_KEY_BASE` (a long random string) and `DATABASE_URL` in it.
 
 8. Adding HTTPS
 
@@ -247,6 +288,214 @@ Some web servers (like Caddy or Traefik) can handle generating and setting up HT
 There is an example nginx configuration provided at `config/deploy/nginx.conf` and one for Caddy at `config/deploy/Caddyfile2-https`
 
 > NOTE: If you've built from source, you should point the web server root directory to be `_build/prod/rel/bonfire/lib/bonfire-[current-version]/priv/static`
+
+### Bare-metal (no root)
+
+These instructions apply for servers with hardened security measures where root access is not an option. 
+
+#### Overview
+1. Download and untar a binary with a bonfire flavour and dependencies to your home folder.
+2. Setting up `.env`
+3. Run bonfire 
+
+#### Download binaries
+
+Starting from [v.1.0.4-alpha.3](https://github.com/bonfire-networks/bonfire-app/releases/tag/v1.0.4-alpha.3), bonfire includes a binaries with dependencies (e.g., just and erlang/elixir) bundled with it. 
+
+> [!IMPORTANT]
+> Note that there are different binaries for different bonfire flavours (currently only `social` and `openscience`) as well as for different distros (currently RHEL and debian). In this example, we are assuming openscience flavour for RHEL, but make sure to download the right file for your use case.
+
+Download and unzip the bundle in a folder where you have write permissions, such as `/home/bonfire`:
+
+```bash
+wget  https://github.com/bonfire-networks/bonfire-app/releases/download/v1.0.4-alpha.3/bonfire-open_science-amd64-debian-bookworm.tar.gz | tar -xzf - -C /home/<your_username>/bonfire --strip-components=1
+```
+
+#### Setting up `.env`
+
+1. Scaffold `.env`. Unlike with the bare-metal with root access, the required templates are not included in the binaries and will need to be downloaded from the repository:
+
+```bash
+mkdir bonfire-templates
+
+# Download files
+wget https://raw.githubusercontent.com/bonfire-networks/bonfire-app/refs/heads/main/config/templates/public.env -P bonfire-templates
+wget https://raw.githubusercontent.com/bonfire-networks/bonfire-app/refs/heads/main/config/templates/not_secret.env -P bonfire-templates
+
+# Create env file from templates.
+cat bonfire-templates/public.env bonfire-templates/not_secret.env > bonfire/.env
+
+# Cleanup
+rm -rf bonfire-templates/
+
+```
+2. Generate required keys. Edit `bonfire/.env` to set `SECRET_KEY_BASE`, `DATABASE_URL`, and other required values. To generate the keys with random values and paste their values on `.env`, create and run this `.sh` script in the `bonfire/` folder:
+
+1. Create the script: `touch keys-generator.sh`:
+2. Edit `keys-generator.sh`and paste this content:
+
+```shell
+#!/usr/bin/env bash
+
+rand() {
+  openssl rand -base64 "$1" | tr -d '\n/+=' | head -c "$1"
+  echo
+}
+
+env_file=$(readlink .env 2>/dev/null || echo .env)
+
+set_var() {
+  key="$1"
+  value="$2"
+
+  if grep -q "^${key}=" "$env_file" 2>/dev/null; then
+    # Replace existing key
+    sed -i "s|^${key}=.*|${key}=${value}|" "$env_file"
+  else
+    # Append if not found
+    echo "${key}=${value}" >> "$env_file"
+  fi
+}
+
+set_var "SECRET_KEY_BASE" "$(rand 128)"
+set_var "SIGNING_SALT" "$(rand 128)"
+set_var "ENCRYPTION_SALT" "$(rand 128)"
+set_var "RELEASE_COOKIE" "$(rand 42)"
+set_var "POSTGRES_PASSWORD" "$(rand 42)"
+set_var "MEILI_MASTER_KEY" "$(rand 42)"
+set_var "SONIC_PASSWORD" "$(rand 42)"
+
+echo "Updated $env_file"
+```
+
+3. Make it executable: `chmod +x keys-generator.sh` and run it to generate the keys: `./keys-generator.sh`.
+4. Edit `.env`  (`nano bonfire/.env`) to introduce the remaining variables and credentials:
+	1. `HOSTNAME`
+ 	2. `POSTGRES_HOST`
+  3. `POSTGRES_USER`
+  4. `POSTGRES_DB`
+
+#### Run bonfire
+
+To run bonfire we need to run `bin/bonfire start`. However, due to the setup, `.env` will be ignored. To address that, we will need to run within a wrapper script that ensures that `.env` is also loaded.
+
+##### Using `systemctl`
+
+1. On `/home/<your_user>/.config/systemd/user/` create two files: `bonfire.service` and `sonic.service`, with the following contents:
+	1. `bonfire.service`:
+
+```
+**[Unit]**
+
+Description=Bonfire
+
+After=network.target sonic.service
+
+Wants=sonic.service
+
+**[Service]**
+
+WorkingDirectory=/home/<your_user>/bonfire
+
+EnvironmentFile=/home/<your_user>/bonfire/.env
+
+ExecStart=/home/<your_user>/bonfire/bin/bonfire start
+
+Restart=on-failure
+
+RestartSec=5
+
+**[Install]**
+
+WantedBy=default.target
+```
+
+	2. sonic.service
+
+```
+**[Unit]**
+
+Description=Sonic search backend
+
+After=network.target
+
+**[Service]**
+
+ExecStart=/home/<your_user>/sonic/sonic -c /home/<your_user>/sonic/config.cfg
+
+Restart=on-failure
+
+**[Install]**
+
+WantedBy=default.target
+```
+1. Run the following command
+
+```bash
+systemctl --user start bonfire
+```
+
+
+> [!tip] Frequent `systemctl` commands
+> 1. Check status: `systemctl --user status bonfire`
+> 2. Check sonic status: `systemctl --user status sonic`
+> 3. Start bonfire: `systemctl --user start bonfire`
+> 4. Stop bonfire: `systemctl --user stop bonfire`
+
+
+
+##### (Deprecated) Using a custom script
+
+1. Create a `start.sh` script (`touch start.sh`and `chmod +x start.sh`) and paste the following:
+```bash
+#!/usr/bin/env bash
+set -euo pipefail
+set -a
+source .env
+set +a
+exec bin/bonfire "${@:-start}"
+```
+
+2. then you can run for example:
+	1. `start.sh`: defaults to "start"
+	2. `start.sh daemon`: to run in background
+	3. `start.sh remote`: to connect to bg app
+
+#### Reverse proxy and process supervisor
+
+
+1. Configuring Apache as a reverse proxy: edit .htaccess with the following content:
+
+```
+ AddOutputFilterByType DEFLATE text/html text/plain text/css text/javascript \
+        application/javascript application/json application/xml image/svg+xml
+
+    # User uploads served directly by Apache
+    Alias /data/uploads/ /home/youruser/bonfire/uploads/
+    <Directory /home/youruser/bonfire/uploads>
+        Require all granted
+        Options -Indexes
+    </Directory>
+    ProxyPassMatch ^/data/uploads/ !
+
+    # WebSocket upgrade
+    RewriteEngine On
+    RewriteCond %{REQUEST_URI} !^/data/uploads/
+    RewriteCond %{HTTP:Upgrade} websocket [NC]
+    RewriteCond %{HTTP:Connection} upgrade [NC]
+    RewriteRule ^/?(.*) "ws://127.0.0.1:4000/$1" [P,L]
+
+    # Everything else (including priv/static assets) proxied to Phoenix
+    ProxyPreserveHost On
+    ProxyPass        / http://127.0.0.1:4000/
+    ProxyPassReverse / http://127.0.0.1:4000/
+
+    RequestHeader set X-Forwarded-Proto "https"
+    RequestHeader set X-Forwarded-Port  "443"
+```
+2. A process supervisor is needed to ensure that bonfire is restarted if the server restarts or the app crashes for any reason.
+
+Instructions to be added.
 
 ### Guix
 
@@ -607,7 +856,7 @@ The last piece to be able to access your instance from the Internet is a reverse
 <!-- tabs-close -->
 
 
-## Preparing the config (in .env)
+## Preparing the config (in .env)
 
 ### Config keys you should pay special attention to:
 The app needs these environment variables to be configured in order to work.
@@ -615,6 +864,7 @@ The app needs these environment variables to be configured in order to work.
 - `FLAVOUR` should reflect your chosen flavour
 - `HOSTNAME` (your domain name, eg: `bonfire.example.com`)
 - `MAIL_BACKEND`, `MAIL_DOMAIN` and `MAIL_KEY` and related keys to configure transactional email, for example set `MAIL_BACKEND=mailgun` and sign up at [Mailgun](https://www.mailgun.com/) and then configure the domain name and key (you may also need to set `MAIL_BASE_URI` if your domain is not setup in EU, as the default `MAIL_BASE_URI` is set as `https://api.eu.mailgun.net/v3`). Many other services and approaches (including SMTP) are available, see [the configuration docs](Bonfire.Mailer.html).
+  - If you use `MAIL_BACKEND=smtp`, set `MAIL_SERVER`, `MAIL_USER` and `MAIL_PASSWORD` (plus optionally `MAIL_PORT` and `MAIL_SSL`) instead of `MAIL_KEY`. Do **not** set both `MAIL_KEY` and `MAIL_PASSWORD`: `MAIL_KEY` takes precedence, so a leftover `MAIL_KEY` from a previous API-based backend will be sent as your SMTP password and authentication will fail (eg. `535 5.7.8`). Remove `MAIL_KEY` from the environment and redeploy so the runtime config is reloaded.
 - `UPLOADS_S3_BUCKET` and the related API key and secret for uploads. See `config/runtime.exs` for extra variables available to set if you're not using the default service and region (which is [Scaleway](https://www.scaleway.com/en/object-storage/) Paris).
 
 ### Secret keys for which you should put random secrets. 

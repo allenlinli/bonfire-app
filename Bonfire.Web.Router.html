@@ -4,17 +4,17 @@
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="ExDoc v0.40.1">
-    <meta name="project" content="Bonfire v1.0.3-social-alpha.27">
+    <meta name="generator" content="ExDoc v0.40.4">
+    <meta name="project" content="Bonfire v1.0.8-community-beta.9">
 
 
-    <title>Bonfire.Web.Router — Bonfire v1.0.3-social-alpha.27</title>
+    <title>Bonfire.Web.Router — Bonfire v1.0.8-community-beta.9</title>
 
-    <link rel="stylesheet" href="dist/html-elixir-YJO4MOOW.css" />
+    <link rel="stylesheet" href="dist/html-elixir-RXHHCTJW.css" />
 
-    <script defer src="dist/sidebar_items-AD2A6375.js"></script>
+    <script defer src="dist/sidebar_items-ABB79E03.js"></script>
     <script defer src="docs_config.js"></script>
-    <script defer src="dist/html-YU4BZFVS.js"></script>
+    <script defer src="dist/html-MI33G4N7.js"></script>
 
   </head>
   <body>
@@ -41,7 +41,7 @@
 Bonfire
         </a>
         <div class="sidebar-projectVersion" translate="no">
-          v1.0.3-social-alpha.27
+          v1.0.8-community-beta.9
         </div>
       </div>
     </div>
@@ -97,8 +97,8 @@ Bonfire
 <div id="top-content">
   <div class="heading-with-actions top-heading">
     <h1>
-      <span translate="no">Bonfire.<wbr>Web.<wbr>Router</span> 
-      <small class="app-vsn" translate="no">(Bonfire v1.0.3-social-alpha.27)</small>
+      <span translate="no">Bonfire.<wbr />Web.<wbr />Router</span> 
+      <small class="app-vsn" translate="no">(Bonfire v1.0.8-community-beta.9)</small>
 
     </h1>
 
@@ -109,7 +109,7 @@ Bonfire
 
 
 
-      <a href="https://github.com/bonfire-networks/bonfire-app/blob/main/lib/bonfire/web/router/routes.ex#L224" title="View Source" class="icon-action" rel="help">
+      <a href="https://github.com/bonfire-networks/bonfire-app/blob/main/lib/bonfire/web/router/routes.ex#L226" title="View Source" class="icon-action" rel="help nofollow">
         <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         <span class="sr-only">View Source</span>
       </a>
@@ -142,6 +142,14 @@ Bonfire
     <div class="summary-row">
       <div class="summary-signature">
         <a href="#account_required/2" data-no-tooltip="" translate="no">account_required(conn, _)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#account_verification/2" data-no-tooltip="" translate="no">account_verification(conn, _)</a>
 
       </div>
 
@@ -295,6 +303,14 @@ Bonfire
 
     <div class="summary-row">
       <div class="summary-signature">
+        <a href="#cacheable_pins_public/2" data-no-tooltip="" translate="no">cacheable_pins_public(conn, _)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
         <a href="#cacheable_post_public/2" data-no-tooltip="" translate="no">cacheable_post_public(conn, _)</a>
 
       </div>
@@ -333,7 +349,7 @@ Bonfire
 
       </div>
 
-        <div class="summary-synopsis"><p>Callback implementation for <a href="https://hexdocs.pm/phoenix/1.8.5/Phoenix.VerifiedRoutes.html#c:formatted_routes/1"><code class="inline">Phoenix.VerifiedRoutes.formatted_routes/1</code></a>.</p></div>
+        <div class="summary-synopsis"><p>Callback implementation for <a href="https://phoenix.hexdocs.pm/1.8.14/Phoenix.VerifiedRoutes.html#c:formatted_routes/1"><code class="inline">Phoenix.VerifiedRoutes.formatted_routes/1</code></a>.</p></div>
 
     </div>
 
@@ -510,11 +526,19 @@ for serving web requests.</p></div>
 
     <div class="summary-row">
       <div class="summary-signature">
+        <a href="#user_session_required/2" data-no-tooltip="" translate="no">user_session_required(conn, _)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
         <a href="#verified_route?/2" data-no-tooltip="" translate="no">verified_route?(_, split_path)</a>
 
       </div>
 
-        <div class="summary-synopsis"><p>Callback implementation for <a href="https://hexdocs.pm/phoenix/1.8.5/Phoenix.VerifiedRoutes.html#c:verified_route?/2"><code class="inline">Phoenix.VerifiedRoutes.verified_route?/2</code></a>.</p></div>
+        <div class="summary-synopsis"><p>Callback implementation for <a href="https://phoenix.hexdocs.pm/1.8.14/Phoenix.VerifiedRoutes.html#c:verified_route?/2"><code class="inline">Phoenix.VerifiedRoutes.verified_route?/2</code></a>.</p></div>
 
     </div>
 
@@ -558,7 +582,7 @@ for serving web requests.</p></div>
       <h1 class="signature" translate="no">absinthe_before_send(conn, blueprint)</h1>
 
 
-        <a href="https://github.com/bonfire-networks/bonfire-app/blob/main/lib/bonfire/web/router/routes.ex#L269" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/bonfire-networks/bonfire-app/blob/main/lib/bonfire/web/router/routes.ex#L271" class="icon-action" rel="help nofollow" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -580,7 +604,29 @@ for serving web requests.</p></div>
       <h1 class="signature" translate="no">account_required(conn, _)</h1>
 
 
-        <a href="https://github.com/bonfire-networks/bonfire-app/blob/main/lib/bonfire/web/router/routes.ex#L269" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/bonfire-networks/bonfire-app/blob/main/lib/bonfire/web/router/routes.ex#L271" class="icon-action" rel="help nofollow" aria-label="View Source">
+          <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        </a>
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+
+  </section>
+</section>
+<section class="detail" id="account_verification/2">
+
+  <div class="detail-header">
+    <a href="#account_verification/2" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">account_verification(conn, _)</h1>
+
+
+        <a href="https://github.com/bonfire-networks/bonfire-app/blob/main/lib/bonfire/web/router/routes.ex#L271" class="icon-action" rel="help nofollow" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -602,7 +648,7 @@ for serving web requests.</p></div>
       <h1 class="signature" translate="no">activity_json(conn, _)</h1>
 
 
-        <a href="https://github.com/bonfire-networks/bonfire-app/blob/main/lib/bonfire/web/router/routes.ex#L269" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/bonfire-networks/bonfire-app/blob/main/lib/bonfire/web/router/routes.ex#L271" class="icon-action" rel="help nofollow" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -624,7 +670,7 @@ for serving web requests.</p></div>
       <h1 class="signature" translate="no">activity_json_or_html(conn, _)</h1>
 
 
-        <a href="https://github.com/bonfire-networks/bonfire-app/blob/main/lib/bonfire/web/router/routes.ex#L269" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/bonfire-networks/bonfire-app/blob/main/lib/bonfire/web/router/routes.ex#L271" class="icon-action" rel="help nofollow" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -646,7 +692,7 @@ for serving web requests.</p></div>
       <h1 class="signature" translate="no">admin_required(conn, _)</h1>
 
 
-        <a href="https://github.com/bonfire-networks/bonfire-app/blob/main/lib/bonfire/web/router/routes.ex#L269" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/bonfire-networks/bonfire-app/blob/main/lib/bonfire/web/router/routes.ex#L271" class="icon-action" rel="help nofollow" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -668,7 +714,7 @@ for serving web requests.</p></div>
       <h1 class="signature" translate="no">api_browser(conn, _)</h1>
 
 
-        <a href="https://github.com/bonfire-networks/bonfire-app/blob/main/lib/bonfire/web/router/routes.ex#L269" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/bonfire-networks/bonfire-app/blob/main/lib/bonfire/web/router/routes.ex#L271" class="icon-action" rel="help nofollow" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -690,7 +736,7 @@ for serving web requests.</p></div>
       <h1 class="signature" translate="no">authorize(conn, opts)</h1>
 
 
-        <a href="https://github.com/bonfire-networks/bonfire-app/blob/main/lib/bonfire/web/router/routes.ex#L269" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/bonfire-networks/bonfire-app/blob/main/lib/bonfire/web/router/routes.ex#L271" class="icon-action" rel="help nofollow" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -712,7 +758,7 @@ for serving web requests.</p></div>
       <h1 class="signature" translate="no">basic(conn, _)</h1>
 
 
-        <a href="https://github.com/bonfire-networks/bonfire-app/blob/main/lib/bonfire/web/router/routes.ex#L269" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/bonfire-networks/bonfire-app/blob/main/lib/bonfire/web/router/routes.ex#L271" class="icon-action" rel="help nofollow" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -734,7 +780,7 @@ for serving web requests.</p></div>
       <h1 class="signature" translate="no">basic_html(conn, _)</h1>
 
 
-        <a href="https://github.com/bonfire-networks/bonfire-app/blob/main/lib/bonfire/web/router/routes.ex#L269" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/bonfire-networks/bonfire-app/blob/main/lib/bonfire/web/router/routes.ex#L271" class="icon-action" rel="help nofollow" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -756,7 +802,7 @@ for serving web requests.</p></div>
       <h1 class="signature" translate="no">basic_json(conn, _)</h1>
 
 
-        <a href="https://github.com/bonfire-networks/bonfire-app/blob/main/lib/bonfire/web/router/routes.ex#L269" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/bonfire-networks/bonfire-app/blob/main/lib/bonfire/web/router/routes.ex#L271" class="icon-action" rel="help nofollow" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -778,7 +824,7 @@ for serving web requests.</p></div>
       <h1 class="signature" translate="no">browser(conn, _)</h1>
 
 
-        <a href="https://github.com/bonfire-networks/bonfire-app/blob/main/lib/bonfire/web/router/routes.ex#L269" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/bonfire-networks/bonfire-app/blob/main/lib/bonfire/web/router/routes.ex#L271" class="icon-action" rel="help nofollow" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -800,7 +846,7 @@ for serving web requests.</p></div>
       <h1 class="signature" translate="no">browser_accepts(conn, _)</h1>
 
 
-        <a href="https://github.com/bonfire-networks/bonfire-app/blob/main/lib/bonfire/web/router/routes.ex#L269" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/bonfire-networks/bonfire-app/blob/main/lib/bonfire/web/router/routes.ex#L271" class="icon-action" rel="help nofollow" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -822,7 +868,7 @@ for serving web requests.</p></div>
       <h1 class="signature" translate="no">browser_or_cacheable(conn, _)</h1>
 
 
-        <a href="https://github.com/bonfire-networks/bonfire-app/blob/main/lib/bonfire/web/router/routes.ex#L269" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/bonfire-networks/bonfire-app/blob/main/lib/bonfire/web/router/routes.ex#L271" class="icon-action" rel="help nofollow" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -844,7 +890,7 @@ for serving web requests.</p></div>
       <h1 class="signature" translate="no">browser_render(conn, _)</h1>
 
 
-        <a href="https://github.com/bonfire-networks/bonfire-app/blob/main/lib/bonfire/web/router/routes.ex#L269" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/bonfire-networks/bonfire-app/blob/main/lib/bonfire/web/router/routes.ex#L271" class="icon-action" rel="help nofollow" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -866,7 +912,7 @@ for serving web requests.</p></div>
       <h1 class="signature" translate="no">browser_security(conn, _)</h1>
 
 
-        <a href="https://github.com/bonfire-networks/bonfire-app/blob/main/lib/bonfire/web/router/routes.ex#L269" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/bonfire-networks/bonfire-app/blob/main/lib/bonfire/web/router/routes.ex#L271" class="icon-action" rel="help nofollow" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -888,7 +934,7 @@ for serving web requests.</p></div>
       <h1 class="signature" translate="no">browser_ui(conn, _)</h1>
 
 
-        <a href="https://github.com/bonfire-networks/bonfire-app/blob/main/lib/bonfire/web/router/routes.ex#L269" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/bonfire-networks/bonfire-app/blob/main/lib/bonfire/web/router/routes.ex#L271" class="icon-action" rel="help nofollow" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -910,7 +956,7 @@ for serving web requests.</p></div>
       <h1 class="signature" translate="no">browser_unsafe(conn, _)</h1>
 
 
-        <a href="https://github.com/bonfire-networks/bonfire-app/blob/main/lib/bonfire/web/router/routes.ex#L269" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/bonfire-networks/bonfire-app/blob/main/lib/bonfire/web/router/routes.ex#L271" class="icon-action" rel="help nofollow" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -932,7 +978,7 @@ for serving web requests.</p></div>
       <h1 class="signature" translate="no">cacheable(conn, _)</h1>
 
 
-        <a href="https://github.com/bonfire-networks/bonfire-app/blob/main/lib/bonfire/web/router/routes.ex#L269" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/bonfire-networks/bonfire-app/blob/main/lib/bonfire/web/router/routes.ex#L271" class="icon-action" rel="help nofollow" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -954,7 +1000,7 @@ for serving web requests.</p></div>
       <h1 class="signature" translate="no">cacheable_comments_public(conn, _)</h1>
 
 
-        <a href="https://github.com/bonfire-networks/bonfire-app/blob/main/lib/bonfire/web/router/routes.ex#L269" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/bonfire-networks/bonfire-app/blob/main/lib/bonfire/web/router/routes.ex#L271" class="icon-action" rel="help nofollow" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -976,7 +1022,29 @@ for serving web requests.</p></div>
       <h1 class="signature" translate="no">cacheable_page(conn, _)</h1>
 
 
-        <a href="https://github.com/bonfire-networks/bonfire-app/blob/main/lib/bonfire/web/router/routes.ex#L269" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/bonfire-networks/bonfire-app/blob/main/lib/bonfire/web/router/routes.ex#L271" class="icon-action" rel="help nofollow" aria-label="View Source">
+          <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        </a>
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+
+  </section>
+</section>
+<section class="detail" id="cacheable_pins_public/2">
+
+  <div class="detail-header">
+    <a href="#cacheable_pins_public/2" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">cacheable_pins_public(conn, _)</h1>
+
+
+        <a href="https://github.com/bonfire-networks/bonfire-app/blob/main/lib/bonfire/web/router/routes.ex#L271" class="icon-action" rel="help nofollow" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -998,7 +1066,7 @@ for serving web requests.</p></div>
       <h1 class="signature" translate="no">cacheable_post_public(conn, _)</h1>
 
 
-        <a href="https://github.com/bonfire-networks/bonfire-app/blob/main/lib/bonfire/web/router/routes.ex#L269" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/bonfire-networks/bonfire-app/blob/main/lib/bonfire/web/router/routes.ex#L271" class="icon-action" rel="help nofollow" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -1020,7 +1088,7 @@ for serving web requests.</p></div>
       <h1 class="signature" translate="no">call(conn, opts)</h1>
 
 
-        <a href="https://github.com/bonfire-networks/bonfire-app/blob/main/lib/bonfire/web/router/routes.ex#L269" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/bonfire-networks/bonfire-app/blob/main/lib/bonfire/web/router/routes.ex#L271" class="icon-action" rel="help nofollow" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -1042,7 +1110,7 @@ for serving web requests.</p></div>
       <h1 class="signature" translate="no">check_provider_enabled(conn, opts)</h1>
 
 
-        <a href="https://github.com/bonfire-networks/bonfire-app/blob/main/lib/bonfire/web/router/routes.ex#L269" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/bonfire-networks/bonfire-app/blob/main/lib/bonfire/web/router/routes.ex#L271" class="icon-action" rel="help nofollow" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -1064,7 +1132,7 @@ for serving web requests.</p></div>
       <h1 class="signature" translate="no">early_hints_authed(conn, _)</h1>
 
 
-        <a href="https://github.com/bonfire-networks/bonfire-app/blob/main/lib/bonfire/web/router/routes.ex#L269" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/bonfire-networks/bonfire-app/blob/main/lib/bonfire/web/router/routes.ex#L271" class="icon-action" rel="help nofollow" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -1086,7 +1154,7 @@ for serving web requests.</p></div>
       <h1 class="signature" translate="no">formatted_routes(_)</h1>
 
 
-        <a href="https://github.com/bonfire-networks/bonfire-app/blob/main/lib/bonfire/web/router/routes.ex#L269" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/bonfire-networks/bonfire-app/blob/main/lib/bonfire/web/router/routes.ex#L271" class="icon-action" rel="help nofollow" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -1095,7 +1163,7 @@ for serving web requests.</p></div>
 
   <section class="docstring">
 
-<p>Callback implementation for <a href="https://hexdocs.pm/phoenix/1.8.5/Phoenix.VerifiedRoutes.html#c:formatted_routes/1"><code class="inline">Phoenix.VerifiedRoutes.formatted_routes/1</code></a>.</p>
+<p>Callback implementation for <a href="https://phoenix.hexdocs.pm/1.8.14/Phoenix.VerifiedRoutes.html#c:formatted_routes/1"><code class="inline">Phoenix.VerifiedRoutes.formatted_routes/1</code></a>.</p>
   </section>
 </section>
 <section class="detail" id="generate_reverse_router!/1">
@@ -1110,7 +1178,7 @@ for serving web requests.</p></div>
       <h1 class="signature" translate="no">generate_reverse_router!(app \\ :bonfire)</h1>
 
 
-        <a href="https://github.com/bonfire-networks/bonfire-app/blob/main/lib/bonfire/web/router/routes.ex#L272" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/bonfire-networks/bonfire-app/blob/main/lib/bonfire/web/router/routes.ex#L274" class="icon-action" rel="help nofollow" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -1132,7 +1200,7 @@ for serving web requests.</p></div>
       <h1 class="signature" translate="no">graphql(conn, _)</h1>
 
 
-        <a href="https://github.com/bonfire-networks/bonfire-app/blob/main/lib/bonfire/web/router/routes.ex#L269" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/bonfire-networks/bonfire-app/blob/main/lib/bonfire/web/router/routes.ex#L271" class="icon-action" rel="help nofollow" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -1154,7 +1222,7 @@ for serving web requests.</p></div>
       <h1 class="signature" translate="no">guest_only(conn, _)</h1>
 
 
-        <a href="https://github.com/bonfire-networks/bonfire-app/blob/main/lib/bonfire/web/router/routes.ex#L269" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/bonfire-networks/bonfire-app/blob/main/lib/bonfire/web/router/routes.ex#L271" class="icon-action" rel="help nofollow" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -1176,7 +1244,7 @@ for serving web requests.</p></div>
       <h1 class="signature" translate="no">host_meta(conn, _)</h1>
 
 
-        <a href="https://github.com/bonfire-networks/bonfire-app/blob/main/lib/bonfire/web/router/routes.ex#L269" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/bonfire-networks/bonfire-app/blob/main/lib/bonfire/web/router/routes.ex#L271" class="icon-action" rel="help nofollow" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -1198,7 +1266,7 @@ for serving web requests.</p></div>
       <h1 class="signature" translate="no">html_only(conn, _)</h1>
 
 
-        <a href="https://github.com/bonfire-networks/bonfire-app/blob/main/lib/bonfire/web/router/routes.ex#L269" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/bonfire-networks/bonfire-app/blob/main/lib/bonfire/web/router/routes.ex#L271" class="icon-action" rel="help nofollow" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -1220,7 +1288,7 @@ for serving web requests.</p></div>
       <h1 class="signature" translate="no">iframe_embeddable(conn, _)</h1>
 
 
-        <a href="https://github.com/bonfire-networks/bonfire-app/blob/main/lib/bonfire/web/router/routes.ex#L269" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/bonfire-networks/bonfire-app/blob/main/lib/bonfire/web/router/routes.ex#L271" class="icon-action" rel="help nofollow" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -1242,7 +1310,7 @@ for serving web requests.</p></div>
       <h1 class="signature" translate="no">init(opts)</h1>
 
 
-        <a href="https://github.com/bonfire-networks/bonfire-app/blob/main/lib/bonfire/web/router/routes.ex#L269" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/bonfire-networks/bonfire-app/blob/main/lib/bonfire/web/router/routes.ex#L271" class="icon-action" rel="help nofollow" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -1265,7 +1333,7 @@ for serving web requests.</p>
       <h1 class="signature" translate="no">load_authorization(conn, opts)</h1>
 
 
-        <a href="https://github.com/bonfire-networks/bonfire-app/blob/main/lib/bonfire/web/router/routes.ex#L269" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/bonfire-networks/bonfire-app/blob/main/lib/bonfire/web/router/routes.ex#L271" class="icon-action" rel="help nofollow" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -1287,7 +1355,7 @@ for serving web requests.</p>
       <h1 class="signature" translate="no">load_current_auth(conn, _)</h1>
 
 
-        <a href="https://github.com/bonfire-networks/bonfire-app/blob/main/lib/bonfire/web/router/routes.ex#L269" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/bonfire-networks/bonfire-app/blob/main/lib/bonfire/web/router/routes.ex#L271" class="icon-action" rel="help nofollow" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -1309,7 +1377,7 @@ for serving web requests.</p>
       <h1 class="signature" translate="no">masto_api(conn, _)</h1>
 
 
-        <a href="https://github.com/bonfire-networks/bonfire-app/blob/main/lib/bonfire/web/router/routes.ex#L269" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/bonfire-networks/bonfire-app/blob/main/lib/bonfire/web/router/routes.ex#L271" class="icon-action" rel="help nofollow" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -1331,7 +1399,7 @@ for serving web requests.</p>
       <h1 class="signature" translate="no">rate_limit(conn, opts)</h1>
 
 
-        <a href="https://github.com/bonfire-networks/bonfire-app/blob/main/lib/bonfire/web/router/routes.ex#L269" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/bonfire-networks/bonfire-app/blob/main/lib/bonfire/web/router/routes.ex#L271" class="icon-action" rel="help nofollow" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -1365,7 +1433,7 @@ with fallback to default options provided in the plug call.</p><h2 id="rate_limi
       <h1 class="signature" translate="no">require_authenticated_user(conn, _)</h1>
 
 
-        <a href="https://github.com/bonfire-networks/bonfire-app/blob/main/lib/bonfire/web/router/routes.ex#L269" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/bonfire-networks/bonfire-app/blob/main/lib/bonfire/web/router/routes.ex#L271" class="icon-action" rel="help nofollow" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -1387,7 +1455,7 @@ with fallback to default options provided in the plug call.</p><h2 id="rate_limi
       <h1 class="signature" translate="no">require_confirmed(conn, _)</h1>
 
 
-        <a href="https://github.com/bonfire-networks/bonfire-app/blob/main/lib/bonfire/web/router/routes.ex#L269" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/bonfire-networks/bonfire-app/blob/main/lib/bonfire/web/router/routes.ex#L271" class="icon-action" rel="help nofollow" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -1409,7 +1477,7 @@ with fallback to default options provided in the plug call.</p><h2 id="rate_limi
       <h1 class="signature" translate="no">safe_protect_from_forgery(conn, opts)</h1>
 
 
-        <a href="https://github.com/bonfire-networks/bonfire-app/blob/main/lib/bonfire/web/router/routes.ex#L269" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/bonfire-networks/bonfire-app/blob/main/lib/bonfire/web/router/routes.ex#L271" class="icon-action" rel="help nofollow" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -1431,7 +1499,7 @@ with fallback to default options provided in the plug call.</p><h2 id="rate_limi
       <h1 class="signature" translate="no">set_locale(conn, opts)</h1>
 
 
-        <a href="https://github.com/bonfire-networks/bonfire-app/blob/main/lib/bonfire/web/router/routes.ex#L269" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/bonfire-networks/bonfire-app/blob/main/lib/bonfire/web/router/routes.ex#L271" class="icon-action" rel="help nofollow" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -1453,7 +1521,7 @@ with fallback to default options provided in the plug call.</p><h2 id="rate_limi
       <h1 class="signature" translate="no">signed_activity_pub_fetch(conn, _)</h1>
 
 
-        <a href="https://github.com/bonfire-networks/bonfire-app/blob/main/lib/bonfire/web/router/routes.ex#L269" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/bonfire-networks/bonfire-app/blob/main/lib/bonfire/web/router/routes.ex#L271" class="icon-action" rel="help nofollow" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -1475,7 +1543,7 @@ with fallback to default options provided in the plug call.</p><h2 id="rate_limi
       <h1 class="signature" translate="no">signed_activity_pub_incoming(conn, _)</h1>
 
 
-        <a href="https://github.com/bonfire-networks/bonfire-app/blob/main/lib/bonfire/web/router/routes.ex#L269" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/bonfire-networks/bonfire-app/blob/main/lib/bonfire/web/router/routes.ex#L271" class="icon-action" rel="help nofollow" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -1497,7 +1565,7 @@ with fallback to default options provided in the plug call.</p><h2 id="rate_limi
       <h1 class="signature" translate="no">static_generator(conn, _)</h1>
 
 
-        <a href="https://github.com/bonfire-networks/bonfire-app/blob/main/lib/bonfire/web/router/routes.ex#L269" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/bonfire-networks/bonfire-app/blob/main/lib/bonfire/web/router/routes.ex#L271" class="icon-action" rel="help nofollow" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -1519,7 +1587,7 @@ with fallback to default options provided in the plug call.</p><h2 id="rate_limi
       <h1 class="signature" translate="no">throttle_forms(conn, _)</h1>
 
 
-        <a href="https://github.com/bonfire-networks/bonfire-app/blob/main/lib/bonfire/web/router/routes.ex#L269" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/bonfire-networks/bonfire-app/blob/main/lib/bonfire/web/router/routes.ex#L271" class="icon-action" rel="help nofollow" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -1541,7 +1609,29 @@ with fallback to default options provided in the plug call.</p><h2 id="rate_limi
       <h1 class="signature" translate="no">user_required(conn, _)</h1>
 
 
-        <a href="https://github.com/bonfire-networks/bonfire-app/blob/main/lib/bonfire/web/router/routes.ex#L269" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/bonfire-networks/bonfire-app/blob/main/lib/bonfire/web/router/routes.ex#L271" class="icon-action" rel="help nofollow" aria-label="View Source">
+          <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        </a>
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+
+  </section>
+</section>
+<section class="detail" id="user_session_required/2">
+
+  <div class="detail-header">
+    <a href="#user_session_required/2" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">user_session_required(conn, _)</h1>
+
+
+        <a href="https://github.com/bonfire-networks/bonfire-app/blob/main/lib/bonfire/web/router/routes.ex#L271" class="icon-action" rel="help nofollow" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -1563,7 +1653,7 @@ with fallback to default options provided in the plug call.</p><h2 id="rate_limi
       <h1 class="signature" translate="no">verified_route?(_, split_path)</h1>
 
 
-        <a href="https://github.com/bonfire-networks/bonfire-app/blob/main/lib/bonfire/web/router/routes.ex#L269" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/bonfire-networks/bonfire-app/blob/main/lib/bonfire/web/router/routes.ex#L271" class="icon-action" rel="help nofollow" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -1572,7 +1662,7 @@ with fallback to default options provided in the plug call.</p><h2 id="rate_limi
 
   <section class="docstring">
 
-<p>Callback implementation for <a href="https://hexdocs.pm/phoenix/1.8.5/Phoenix.VerifiedRoutes.html#c:verified_route?/2"><code class="inline">Phoenix.VerifiedRoutes.verified_route?/2</code></a>.</p>
+<p>Callback implementation for <a href="https://phoenix.hexdocs.pm/1.8.14/Phoenix.VerifiedRoutes.html#c:verified_route?/2"><code class="inline">Phoenix.VerifiedRoutes.verified_route?/2</code></a>.</p>
   </section>
 </section>
 <section class="detail" id="webfinger/2">
@@ -1585,7 +1675,7 @@ with fallback to default options provided in the plug call.</p><h2 id="rate_limi
       <h1 class="signature" translate="no">webfinger(conn, _)</h1>
 
 
-        <a href="https://github.com/bonfire-networks/bonfire-app/blob/main/lib/bonfire/web/router/routes.ex#L269" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/bonfire-networks/bonfire-app/blob/main/lib/bonfire/web/router/routes.ex#L271" class="icon-action" rel="help nofollow" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -1607,7 +1697,7 @@ with fallback to default options provided in the plug call.</p><h2 id="rate_limi
       <h1 class="signature" translate="no">well_known_nodeinfo(conn, _)</h1>
 
 
-        <a href="https://github.com/bonfire-networks/bonfire-app/blob/main/lib/bonfire/web/router/routes.ex#L269" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/bonfire-networks/bonfire-app/blob/main/lib/bonfire/web/router/routes.ex#L271" class="icon-action" rel="help nofollow" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -1646,7 +1736,7 @@ with fallback to default options provided in the plug call.</p><h2 id="rate_limi
 
         <p class="built-using">
           Built using
-          <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener" translate="no">ExDoc</a> (v0.40.1) for the
+          <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener" translate="no">ExDoc</a> (v0.40.4) for the
 
             <a href="https://elixir-lang.org" title="Elixir" target="_blank" translate="no">Elixir programming language</a>
 

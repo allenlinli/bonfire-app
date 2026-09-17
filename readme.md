@@ -24,15 +24,27 @@ Bonfire empowers developers and communities to create engaging, customizable, an
 This repo includes configurations to run a few main [flavours of Bonfire](https://bonfirenetworks.org/apps/) you can choose from. Each flavour (see above) includes different extensions and default settings. 
 
 * [Ember](https://github.com/bonfire-networks/ember) for just the basics
-* [Social](https://github.com/bonfire-networks/social) for classical social networking (beta)
-* [Community](https://github.com/bonfire-networks/community) with groups and topics functionality (alpha)
-* [Open Science](https://github.com/bonfire-networks/open_science) building the next generation of open science platforms (alpha)
+* [Social](https://github.com/bonfire-networks/social) for classical social networking (1.0)
+* [Community](https://github.com/bonfire-networks/community) with groups and topics functionality (1.0 beta)
+* [Open Science](https://github.com/bonfire-networks/open_science) building the next generation of open science platforms (alpha/beta)
 * [Coordination](https://github.com/bonfire-networks/coordination) for organising work and collaborating around projects and tasks (pre-alpha)
 * [Cooperation](https://github.com/bonfire-networks/cooperation) for cooperative production, distribution, and exchange of economic resources (pre-alpha)
 
 <!-- As well as app flavours being built by others, including: 
 * [Upcycle](https://github.com/bonfire-networks/upcycle) by MSOE 
 -->
+
+### Release versions
+
+Each flavour is released in different versions (though some flavours are still only available in alpha or beta). Here's how to choose:
+
+| Channel | Stability | Federation safe? | Best for |
+|---------|-----------|-----------------|----------|
+| **Stable** (e.g: 1.0) | Thoroughly tested | Yes | Running a server; please report any bugs you find |
+| **RC** (release candidate) | Ready for broad testing | Yes | Early adopters who want to help catch issues before stable; please report bug and confusing features |
+| **Beta** | New features in progress; existing functionality should hold | With caution | Participating in co-design and giving input on new features and UX; please focus bug reports on pre-existing functionality |
+| **Alpha** | Work in progress, may be broken | **No, turn off federation** | Developers and contributors comfortable with breakage |
+
 
 ### 🧩 Extensions
 
@@ -73,7 +85,7 @@ This project has received funding from [NGI0 Discovery](https://nlnet.nl/discove
 
 ## Copyright and License
 
-Copyright (c) 2020-2024 Bonfire Contributors
+Copyright (c) 2020-2026 Bonfire Contributors
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU Affero General Public License as

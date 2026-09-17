@@ -1,9 +1,11 @@
 # `Bonfire.Web.Router`
-[🔗](https://github.com/bonfire-networks/bonfire-app/blob/main/lib/bonfire/web/router/routes.ex#L224)
+[🔗](https://github.com/bonfire-networks/bonfire-app/blob/main/lib/bonfire/web/router/routes.ex#L226)
 
 # `absinthe_before_send`
 
 # `account_required`
+
+# `account_verification`
 
 # `activity_json`
 
@@ -42,6 +44,8 @@ Used to serve the GraphiQL API browser
 # `cacheable_comments_public`
 
 # `cacheable_page`
+
+# `cacheable_pins_public`
 
 # `cacheable_post_public`
 
@@ -131,6 +135,8 @@ Wraps `protect_from_forgery` to gracefully handle stale CSRF tokens by renewing 
 # `throttle_forms`
 
 # `user_required`
+
+# `user_session_required`
 
 # `verified_route?`
 

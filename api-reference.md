@@ -1,8 +1,11 @@
-# Bonfire v1.0.3-social-alpha.27 - API Reference
+# Bonfire v1.0.8-community-beta.9 - API Reference
 
 ## Modules
 
 - Bonfire utilities
+  - [Bonfire.API.GraphQL.GraphqlWSSocket](Bonfire.API.GraphQL.GraphqlWSSocket.md): `graphql-transport-ws` websocket transport for GraphQL subscriptions
+(the protocol Ferry / graphql-ws clients speak), separate from the
+Phoenix-channels `Absinthe.Phoenix.Socket` at `/api/socket`.
   - [Bonfire.API.GraphQL.Schema](Bonfire.API.GraphQL.Schema.md): Root GraphQL Schema.
 Only active if the `Bonfire.API.GraphQL` extension is present.
 
@@ -15,8 +18,6 @@ Only active if the `Bonfire.API.GraphQL` extension is present.
 
 - Feature extensions
   - [Bonfire.Federate.ActivityPub.LoadTesting](Bonfire.Federate.ActivityPub.LoadTesting.md)
-  - [Bonfire.Localise](Bonfire.Localise.md): Runs at compile-time to include dynamic strings (like verb names and object types) in localisation string extraction.
-
   - [Bonfire.RuntimeConfig](Bonfire.RuntimeConfig.md)
   - [Bonfire.Seeder](Bonfire.Seeder.md): A way to have data seeds that work similarly to migrations.
 
